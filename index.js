@@ -9,6 +9,7 @@ const bodyParser = require('body-parser')
 
 const adapter = new FileSync('db.json')
 const db = low(adapter)
+var port = process.env.port || 3000;
 server.listen(3000);
 app.use(express.static('public'))
 app.use(bodyParser.json())
