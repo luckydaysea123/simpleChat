@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="jquery.js"></script>
+  <script src="socket.io/socket.io.js"></script>
+  <title>Document</title>
+  <script>
+    const socket = io()
+    socket.on('list', (list) => {
+      $('#content').append('<div>' + list + '</div>')
+    })
+
+    $(document).ready(() => {
+      console.log('aaaa');
+
+      $('#login').show();
+      $('#chat').hide();
+      let name = '';
+      $('#register').click(() => {
+        name = $('#name').val()
+        if (name) {
+          $('#name').val('')
+          $('#user').append(name)
+
+          $('#login').hide();
+          $('#chat').show();
+        }
+      })
+      $('#bt').click(() => {
+        socket.emit('chatMessage', name + ': ' + $('#inputChat').val())
+        $('#inputChat').val('')
+      })
+    })
+  </script>
+</head>
+
+<body>
+  <h1 id="user"></h1>
+  <div id="login">
+    <input type="text" id="name">
+    <input type="button" id="register" value="Đăng kí tên">
+  </div>
+
+  <div id="chat">
+    <input type="text" id="inputChat">
+    <input type="button" id='bt' value="Gửi">
+  </div>
+  <div id="content">
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
+  <script src="jquery.js"></script>
+  <script src="socket.io/socket.io.js"></script>
+  <script>
+    const socket = io()
+    // socket.on('list', (list) => {
+    //   $('#content').append('<div>' + list + '</div>')
+    // })
+
+    // $(document).ready(() => {
+    //   $('#login').show();
+    //   $('#chat').hide();
+    //   let name = '';
+    //   $('#register').click(() => {
+    //     name = $('#name').val()
+    //     if (name) {
+    //       $('#name').val('')
+    //       $('#user').append(name)
+
+    //       $('#login').hide();
+    //       $('#chat').show();
+    //     }
+    //   })
+    //   $('#bt').click(() => {
+    //     socket.emit('chatMessage', name + ': ' + $('#inputChat').val())
+    //     $('#inputChat').val('')
+    //   })
+    // })
+
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col col-sm-10">
+        <h1>Nhập thông tin đơn hàng</h1>
+        <br><br>
+        <form action="/donhang" method="POST">
+          <div class="form-group row">
+            <label for="staticEmail" class="col-sm-2">Tên khách hàng</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" name="tenKhachHang">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-2">Hóa đơn</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" name="hoaDon">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-2"> Người đóng hàng</label>
+            <div class="col-sm-7">
+              <select class="form-control" name="dongHang">
+                <option selected>Choose...</option>
+                <option value="Nam">Nam</option>
+                <option value="Dương">Dương</option>
+                <option value="Anh">Anh</option>
+                <option value="Hằng">Hằng</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-2"> Giao hàng</label>
+            <div class="col-sm-7">
+              <select class="form-control" name="giaoHang">
+                <option selected>Choose...</option>
+                <option value="Nam">Nam</option>
+                <option value="Dương">Dương</option>
+                <option value="Anh">Anh</option>
+                <option value="Hằng">Hằng</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-2"> Nguồn hàng</label>
+            <div class="col-sm-7">
+              <select class="form-control" name="nguonHang">
+                <option selected>Choose...</option>
+                <option value="Nam">Nam</option>
+                <option value="Dương">Dương</option>
+                <option value="Anh">Anh</option>
+                <option value="Hằng">Hằng</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-2">Số lượng</label>
+            <div class="col-sm-7">
+              <input type="number" class="form-control" name="soLuong">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-7">
+              <button type="submit" class="btn btn-success">Nhập thông tin</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+</body>
+
+</html>

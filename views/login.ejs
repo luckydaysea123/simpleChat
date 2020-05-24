@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <script src="jquery.js"></script>
+  <script src="socket.io/socket.io.js"></script>
+  <!-- <script>
+    const socket = io()
+    socket.on('list', (list) => {
+      $('#content').append('<div>' + list + '</div>')
+    })
+
+    $(document).ready(() => {
+      $('#login').show();
+      $('#chat').hide();
+      let name = '';
+      $('#register').click(() => {
+        name = $('#name').val()
+        if (name) {
+          $('#name').val('')
+          $('#user').append(name)
+
+          $('#login').hide();
+          $('#chat').show();
+        }
+      })
+      $('#bt').click(() => {
+        socket.emit('chatMessage', name + ': ' + $('#inputChat').val())
+        $('#inputChat').val('')
+      })
+    })
+
+  </script> -->
+</head>
+
+<body>
+  <div id='login'>
+    <h1>Register Name</h1>
+    <input id='name' type="text">
+    <button id='register'>Register</button>
+  </div>
+  <div id='chat'>
+    <h1 id='user'></h1>
+    <input id='inputChat' type="text">
+    <button id='bt'>Send Message</button>
+    <div id='content'></div>
+  </div>
+</body>
+
+</html>
