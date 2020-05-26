@@ -1,3 +1,22 @@
 #content{
     border: 1px solid;
+    overflow-x: hidden; 
+    overflow-x: auto; 
+    height: 800px; 
+    /* width: 400px;  */
+    overflow-anchor: none;
+    padding: 10px;
+}
+
+#anchor {
+    /* allow the final child to be selected as an anchor node */
+    overflow-anchor: auto;
+
+    /* anchor nodes are required to have non-zero area */
+    height: 1px;
+}
+
+.mg-pd{ 
+    margin: 20px !important;
+    padding: 20px  !important;
 }
