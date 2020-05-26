@@ -5,50 +5,68 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="jquery.js"></script>
+  <link rel="stylesheet" href="/public/styles.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
   <script src="socket.io/socket.io.js"></script>
   <title>Document</title>
   <script>
+    let name = ''
+    function uniCharCode(event) {
+      var char = event.which || event.keyCode
+      if (char === 13) {
+        sendMgs()
+      }
+    }
+
+    function sendMgs() {
+      socket.emit('chatMessage', name + ': ' + $('#inputChat').val())
+      $('#inputChat').val('')
+    }
+
     const socket = io()
     socket.on('list', (list) => {
       $('#content').append('<div>' + list + '</div>')
     })
 
     $(document).ready(() => {
-      console.log('aaaa');
+      $('#login').show()
+      $('#chat').hide()
 
-      $('#login').show();
-      $('#chat').hide();
-      let name = '';
       $('#register').click(() => {
         name = $('#name').val()
         if (name) {
           $('#name').val('')
           $('#user').append(name)
 
-          $('#login').hide();
-          $('#chat').show();
+          $('#login').hide()
+          $('#chat').show()
         }
       })
       $('#bt').click(() => {
-        socket.emit('chatMessage', name + ': ' + $('#inputChat').val())
-        $('#inputChat').val('')
+        sendMgs(name)
       })
     })
   </script>
 </head>
 
 <body>
-  <h1 id="user"></h1>
-  <div id="login">
-    <input type="text" id="name">
-    <input type="button" id="register" value="Đăng kí tên">
-  </div>
 
-  <div id="chat">
-    <input type="text" id="inputChat">
-    <input type="button" id='bt' value="Gửi">
-  </div>
-  <div id="content">
+  <div class="row">
+    <form class="col-md-4 col-md-offset-4" class="form-inline">
+      <h1 id="user"></h1>
+      <div id="login" class="form-group">
+        <input type="text" id="name" class="form-control">
+
+      </div>
+      <button type="button" class="btn btn-primary" id="register">Đăng kí tên</button>
+      <div id="chat">
+        <input type="text" id="inputChat" onkeypress="uniCharCode(event)" class="form-control">
+        <input type="button" id='bt' value="Gửi">
+      </div>
+      <div id="content">
+      </div>
+    </form>
   </div>
 
 </body>
