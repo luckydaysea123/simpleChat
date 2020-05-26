@@ -33,19 +33,21 @@
     socket.on('list', (list) => {
       if (list.name === name) {
         $('#content').append(' <div class="row">'
-          + '<div  class="col-xs-6">'
+          + '<div class="col-xs-6 col-xs-offset-6">'
           + '<div class="alert alert-info" role="alert">' + list.msg + '</div>'
           + '</div>'
           + '</div>'
         )
       } else {
         $('#content').append(' <div class="row">'
-          + '<div class="col-xs-6 col-xs-offset-6">'
+          + '<div class="col-xs-1"><img src="images.png" width="50" height="50"></div>'
+          + '<div class="col-xs-6">'
           + '<div class="alert alert-success" role="alert">' + list.msg + '</div>'
           + '</div>'
           + '</div>'
         )
       }
+      $('#content').scrollTop(100000000000000)
 
     })
 
@@ -84,9 +86,9 @@
         </div>
         <h1 id="user"></h1>
         <div id="chat">
-          <textarea type="text" id="inputChat" onkeypress="uniCharCode(event)" class="form-control"
-            placeholder="Type something ..."></textarea>
-            <br>
+          <input type="text" id="inputChat" onkeypress="uniCharCode(event)" class="form-control"
+            placeholder="Type something ...">
+          <br>
           <input type="button" id='bt' value="Click or Enter" class="btn btn-primary">
         </div>
       </div>
